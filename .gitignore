@@ -1,0 +1,11 @@
+# Backend / admin (do not deploy)
+admin/
+*.php
+
+# Editor & dev tools
+.vscode/
+fiveserver.config.js
+
+# OS junk
+.DS_Store
+Thumbs.db

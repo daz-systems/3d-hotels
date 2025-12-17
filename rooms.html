@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rooms & Suites | 3D Hotels</title>
+  <!-- External stylesheet only -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<header id="header">
+  <div class="logo">3D Hotels</div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="rooms.html">Rooms</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="rooms-page">
+  <h1>Our Rooms & Suites</h1>
+  <p>Experience luxury and comfort in every stay at 3D Hotels.</p>
+
+  <div class="room-cards">
+
+    <!-- Standard Room -->
+    <div class="card" onclick="resetOtherForms(this)">
+      <img src="assets/images/rooms/standard-roombhh.jpg" alt="Standard Room">
+      <h3>Standard Room</h3>
+      <p>Cozy room with modern amenities, free Wi-Fi, and city view.</p>
+      <p class="price">₦25,000 / night</p>
+      <form onsubmit="reserveRoom(event, 'Standard Room', 25000)">
+        <input type="date" name="arrival" required>
+        <input type="date" name="departure" required>
+        <input type="number" name="guests" min="1" placeholder="Guests" required>
+        <p class="total-display">Total: ₦0</p>
+        <button type="submit" class="btn">Reserve Now</button>
+      </form>
+    </div>
+
+    <!-- Deluxe Room -->
+    <div class="card" onclick="resetOtherForms(this)">
+      <img src="assets/images/rooms/standard-room1.jpg" alt="Deluxe Room">
+      <h3>Deluxe Room</h3>
+      <p>Elegant room with premium amenities and a relaxing atmosphere.</p>
+      <p class="price">₦40,000 / night</p>
+      <form onsubmit="reserveRoom(event, 'Deluxe Room', 40000)">
+        <input type="date" name="arrival" required>
+        <input type="date" name="departure" required>
+        <input type="number" name="guests" min="1" placeholder="Guests" required>
+        <p class="total-display">Total: ₦0</p>
+        <button type="submit" class="btn">Reserve Now</button>
+      </form>
+    </div>
+
+    <!-- Gold Suite -->
+    <div class="card" onclick="resetOtherForms(this)">
+      <img src="assets/images/rooms/gold-roombhh.jpg" alt="Gold Suite">
+      <h3>Gold Suite</h3>
+      <p>Spacious suite with living area, premium amenities, and panoramic views.</p>
+      <p class="price">₦55,000 / night</p>
+      <form onsubmit="reserveRoom(event, 'Gold Suite', 55000)">
+        <input type="date" name="arrival" required>
+        <input type="date" name="departure" required>
+        <input type="number" name="guests" min="1" placeholder="Guests" required>
+        <p class="total-display">Total: ₦0</p>
+        <button type="submit" class="btn">Reserve Now</button>
+      </form>
+    </div>
+
+    <!-- Platinum Suite -->
+    <div class="card" onclick="resetOtherForms(this)">
+      <img src="assets/images/rooms/exquisit-room3d.jpg" alt="Platinum Suite">
+      <h3>Platinum Suite</h3>
+      <p>Ultimate luxury suite with king-size bed, private lounge, and exclusive services.</p>
+      <p class="price">₦70,000 / night</p>
+      <form onsubmit="reserveRoom(event, 'Platinum Suite', 70000)">
+        <input type="date" name="arrival" required>
+        <input type="date" name="departure" required>
+        <input type="number" name="guests" min="1" placeholder="Guests" required>
+        <p class="total-display">Total: ₦0</p>
+        <button type="submit" class="btn">Reserve Now</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<script src="assets/js/rooms_script.js" defer></script>
+
+
+<footer>
+  <p>&copy; 2025 3D Hotels. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

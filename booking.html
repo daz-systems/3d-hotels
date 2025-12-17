@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Room | 3D Hotels</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">3D Hotels</div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="rooms.html">Rooms</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="booking-page">
+  <h1>Book Your Stay at 3D Hotels</h1>
+
+  <form action="booking.php" method="post" class="booking-form">
+    <label for="name">Full Name</label>
+    <input type="text" name="name" id="name" placeholder="Your Name" required>
+
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" placeholder="Your Email" required>
+
+    <label for="phone">Phone</label>
+    <input type="tel" name="phone" id="phone" placeholder="Phone Number">
+
+    <label for="room_type">Select Room</label>
+    <select name="room_type" id="room_type" required onchange="updatePrice()">
+      <option value="">--Choose a Room--</option>
+      <option value="Standard Room" data-price="100">Standard Room - $100/night</option>
+      <option value="Luxury Suite" data-price="200">Luxury Suite - $200/night</option>
+      <option value="Deluxe Suite" data-price="300">Deluxe Suite - $300/night</option>
+    </select>
+
+    <p id="price-display">Price: $0</p>
+
+    <label for="checkin">Check-in Date</label>
+    <input type="date" name="checkin" id="checkin" required>
+
+    <label for="checkout">Check-out Date</label>
+    <input type="date" name="checkout" id="checkout" required>
+
+    <label for="message">Additional Requests</label>
+    <textarea name="message" id="message" placeholder="Your Message"></textarea>
+
+    <button type="submit" class="btn">Book Now</button>
+  </form>
+</section>
+
+<script>
+function updatePrice(){
+  const select = document.getElementById('room_type');
+  const priceDisplay = document.getElementById('price-display');
+  const selectedOption = select.options[select.selectedIndex];
+  const price = selectedOption.dataset.price || 0;
+  priceDisplay.textContent = 'Price: $' + price + '/night';
+}
+</script>
+
+<form action="booking.php" method="post">
+  <!-- name, email, phone, room_type, checkin, checkout, message fields -->
+</form>
+
+
+</body>
+</html>
