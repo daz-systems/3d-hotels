@@ -2,10 +2,10 @@
 // Sliders & Navigation
 // ==========================
 document.addEventListener('DOMContentLoaded', () => {
-  // About slider
+  // Slider
   const slides = document.querySelectorAll('.about-slide');
   let index = 0;
-  if (slides.length > 0) {
+  if (slides.length) {
     setInterval(() => {
       slides[index].classList.remove('active');
       index = (index + 1) % slides.length;
@@ -18,25 +18,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('nav');
   const links = document.querySelectorAll('nav ul li a');
 
-  if (toggle) {
-    toggle.addEventListener('click', () => {
-      nav.classList.toggle('open');
-    });
-  }
-
-  links.forEach(link => {
-    link.addEventListener('click', () => {
-      nav.classList.remove('open');
-    });
-  });
+  toggle?.addEventListener('click', () => nav.classList.toggle('open'));
+  links.forEach(link => link.addEventListener('click', () => nav.classList.remove('open')));
 });
 
 // ==========================
-// WhatsApp booking function
-// Accessible from HTML onclick
+// WhatsApp booking for global form (if any)
 // ==========================
 function sendWhatsApp() {
   const form = document.getElementById('bookingForm');
+  if (!form) return;
+
   const data = new FormData(form);
   const arrival = data.get('arrival');
   const departure = data.get('departure');
@@ -57,8 +49,7 @@ function sendWhatsApp() {
 // Fix viewport height on mobile
 // ==========================
 function setVh() {
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
+  document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
 }
 setVh();
 window.addEventListener('resize', setVh);
