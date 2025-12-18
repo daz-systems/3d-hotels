@@ -55,31 +55,45 @@ setVh();
 window.addEventListener('resize', setVh);
 
 
+document.addEventListener('DOMContentLoaded', () => {
+  // Hamburger toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('nav');
+  const navLinks = document.querySelector('.nav-links');
 
-// Hamburger menu toggle
-const navToggle = document.querySelector('.nav-toggle');
-const navLinks = document.querySelector('.nav-links');
-
-// Toggle menu on hamburger click
-navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-  navToggle.classList.toggle('open');
-});
-
-// Close menu when a nav link is clicked
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('active');
-    navToggle.classList.remove('open');
+  // Toggle menu on hamburger click
+  navToggle.addEventListener('click', (e) => {
+    e.stopPropagation(); // prevent outside-close firing
+    nav.classList.toggle('open');
+    navLinks.classList.toggle('active');
+    navToggle.classList.toggle('open'); // triggers bar-to-X animation
   });
-});
 
-// Close menu when clicking outside (mobile screen tap)
-document.addEventListener('click', (event) => {
-  const isClickInside = navLinks.contains(event.target) || navToggle.contains(event.target);
-  if (!isClickInside) {
+  // Close menu when a nav link is clicked
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      navLinks.classList.remove('active');
+      navToggle.classList.remove('open');
+    });
+  });
+
+  // Close menu when tapping/clicking outside
+  const closeMenu = () => {
+    nav.classList.remove('open');
     navLinks.classList.remove('active');
     navToggle.classList.remove('open');
-  }
-});
+  };
 
+  const outsidePressHandler = (event) => {
+    const isInside = nav.contains(event.target) || navToggle.contains(event.target);
+    if (!isInside) closeMenu();
+  };
+
+  // Use pointer events for broad support
+  document.addEventListener('pointerdown', outsidePressHandler);
+
+  // Fallbacks for older browsers
+  document.addEventListener('touchstart', outsidePressHandler);
+  document.addEventListener('click', outsidePressHandler);
+});
