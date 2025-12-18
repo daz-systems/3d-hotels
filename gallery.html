@@ -5,24 +5,87 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>3D Hotels | Luxury & Comfort in Onitsha</title>
-  <meta name="description" content="Experience luxury, comfort, and world-class hospitality at 3D Hotels in Onitsha, Nigeria.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://3dhotels.com/">
+  <title>Gallery | 3D Hotels</title>
+  <meta name="description" content="Explore the luxury interiors, rooms, amenities, and event spaces of 3D Hotels in Onitsha.">
 
-  <!-- Open Graph / Social -->
-  <meta property="og:title" content="3D Hotels | Luxury & Comfort in Onitsha">
-  <meta property="og:description" content="Experience luxury, comfort, and world-class hospitality at 3D Hotels in Onitsha, Nigeria.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://3dhotels.com/">
-  <meta property="og:image" content="assets/images/hero/3dhero-edit1.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <!-- Security / Privacy Headers -->
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-
-  <!-- Styles -->
   <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* ========================== */
+    /* Gallery Filters & Buttons */
+    /* ========================== */
+    .gallery-filters {
+      text-align: center;
+      margin: 3rem 0 2rem 0;
+    }
+
+    .filter-btn {
+      padding: 0.6rem 1.2rem;
+      margin: 0 0.3rem 0.5rem 0.3rem;
+      border: 2px solid #c9a24d;
+      background: transparent;
+      color: #c9a24d;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: #c9a24d;
+      color: #fff;
+    }
+
+    /* ========================== */
+    /* Gallery Images & Lightbox */
+    /* ========================== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 0 1.5rem;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-item img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .lightbox-overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
@@ -30,80 +93,138 @@
   <div class="container header-inner">
     <div class="logo">3D Hotels</div>
 
-    <!-- Mobile Hamburger Toggle -->
     <button class="nav-toggle" aria-label="Toggle navigation">
       <span></span>
       <span></span>
       <span></span>
     </button>
 
-    <nav aria-label="Primary navigation">
+    <nav>
       <ul class="nav-links">
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#why-us">Why Choose Us</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="rooms.html">Rooms</a></li>
         <li><a href="membership.html">Membership</a></li>
-        <li><a href="index.html#why-choose-us">Gallery</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
-      <div class="nav-actions">
-        <a href="rooms.html" class="btn">Reserve Room</a>
-        <a href="contact.html" class="btn btn-outline">Get Direction</a>
-      </div>
     </nav>
   </div>
 </header>
 
+<main>
 
-<!-- GALLERY -->
-<section class="gallery-page">
-  <h1>Hotel Gallery</h1>
-  <p>Explore the beauty and luxury of 3D Hotels.</p>
+  <section class="gallery-page">
+    <h1>Hotel Gallery</h1>
+    <p>Explore the beauty and luxury of 3D Hotels.</p>
 
-  <div class="gallery-grid">
-    <a href="assets/images/gallery/pool.jpg"><img src="assets/images/gallery/pool.jpg" alt="Swimming Pool"></a>
-    <a href="assets/images/gallery/restaurant.jpg"><img src="assets/images/gallery/restaurant.jpg" alt="Restaurant"></a>
-    <a href="assets/images/gallery/lounge.jpg"><img src="assets/images/gallery/lounge.jpg" alt="Lounge"></a>
-    <a href="assets/images/gallery/spa.jpg"><img src="assets/images/gallery/spa.jpg" alt="Spa"></a>
-    <a href="assets/images/gallery/gym.jpg"><img src="assets/images/gallery/gym.jpg" alt="Gym"></a>
-    <a href="assets/images/gallery/event-hall.jpg"><img src="assets/images/gallery/event-hall.jpg" alt="Event Hall"></a>
-    <a href="assets/images/gallery/room-deluxe.jpg"><img src="assets/images/gallery/room-deluxe.jpg" alt="Deluxe Room"></a>
-    <a href="assets/images/gallery/room-platinum.jpg"><img src="assets/images/gallery/room-platinum.jpg" alt="Platinum Suite"></a>
-    <!-- Add more images as needed -->
-  </div>
-</section>
+    <!-- Filters -->
+    <div class="gallery-filters">
+      <button data-category="all" class="filter-btn active">All</button>
+      <button data-category="rooms" class="filter-btn">Rooms</button>
+      <button data-category="dining" class="filter-btn">Dining</button>
+      <button data-category="amenities" class="filter-btn">Amenities</button>
+      <button data-category="events" class="filter-btn">Events</button>
+    </div>
 
-<!-- Lightbox -->
-<div id="lightbox">
-  <span class="close">&times;</span>
-  <img class="lightbox-content" id="lightbox-img">
-  <div class="caption" id="caption"></div>
-</div>
+    <!-- Gallery Grid -->
+    <div class="gallery-grid">
+      <!-- Rooms -->
+      <a href="assets/images/rooms/exquisit-room3d.jpg" class="gallery-item" data-category="rooms">
+        <img src="assets/images/rooms/exquisit-room3d.jpg" alt="Exquisite room interior" loading="lazy">
+      </a>
+      <a href="assets/images/about-slides/hotel-hallway.jpg" class="gallery-item" data-category="rooms">
+        <img src="assets/images/about-slides/hotel-hallway.jpg" alt="Hotel hallway with modern design" loading="lazy">
+      </a>
+      <a href="assets/images/rooms/gold-roombhh.jpg" class="gallery-item" data-category="rooms">
+        <img src="assets/images/rooms/gold-roombhh.jpg" alt="gold room interior" loading="lazy">
 
-<!-- FOOTER -->
-<footer>
-  <p>&copy; 2025 3D Hotels. All rights reserved.</p>
+      <a href="assets/images/rooms/platinium-room.jpg" class="gallery-item" data-category="rooms">
+        <img src="assets/images/rooms/platinium-room.jpg" alt="Platinum room interior" loading="lazy">
+
+        <a href="assets/images/rooms/standard-room1.jpg" class="gallery-item" data-category="rooms">
+        <img src="assets/images/rooms/standard-room1.jpg" alt="Exquisite room interior" loading="lazy">  
+
+      <!-- Dining -->
+      <a href="assets/images/about-slides/hotel-resturant.jpg" class="gallery-item" data-category="dining">
+        <img src="assets/images/about-slides/hotel-resturant.jpg" alt="Hotel restaurant with tables set for fine dining" loading="lazy">
+      </a>
+      <a href="assets/images/about-slides/3dhotel-cakedisplay.jpg" class="gallery-item" data-category="dining">
+        <img src="assets/images/about-slides/3dhotel-cakedisplay.jpg" alt="Cake display" loading="lazy">
+      </a>
+      <a href="assets/images/about-slides/hotel-bar.jpg" class="gallery-item" data-category="dining">
+        <img src="assets/images/about-slides/hotel-bar.jpg" alt="Hotel bar" loading="lazy">
+      </a>
+
+      <!-- Amenities -->
+      <a href="assets/images/gallery/3dpool-fullview.jpg" class="gallery-item" data-category="amenities">
+        <img src="assets/images/gallery/3dpool-fullview.jpg" alt="Hotel pool area" loading="lazy">
+      </a>
+      <a href="assets/images/about-slides/hotel-lounge.jpg" class="gallery-item" data-category="amenities">
+        <img src="assets/images/about-slides/hotel-lounge.jpg" alt="Elegant hotel lobby with seating area" loading="lazy">
+      </a>
+      <a href="assets/images/about-slides/3dclub-lobby.jpg" class="gallery-item" data-category="amenities">
+        <img src="assets/images/about-slides/3dclub-lobby.jpg" alt="Hotel club lobby" loading="lazy">
+      </a>
+
+      <!-- Events -->
+      <a href="assets/images/about-slides/3devent-hall-3.jpg" class="gallery-item" data-category="events">
+        <img src="assets/images/about-slides/3devent-hall-3.jpg" alt="Spacious event hall prepared for a function" loading="lazy">
+      </a>
+      <a href="assets/images/about-slides/3dhotel-clubstage.jpg" class="gallery-item" data-category="events">
+        <img src="assets/images/about-slides/3dhotel-clubstage.jpg" alt="Club stage for events" loading="lazy">
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <h2>Contact Us</h2>
+  <p>Email: <a href="mailto:booking@3dhotels.com">booking@3dhotels.com</a></p>
+  <p>Phone: <a href="tel:+2348106983441">+234 8106983441</a></p>
+  <p>Address: Plot 86, Trans-Nkisi, Onitsha, Anambra State, Nigeria</p>
 </footer>
 
+<script src="assets/js/main.js"></script>
 <script>
-  // Lightbox functionality
-  const galleryImages = document.querySelectorAll('.gallery-grid img');
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const caption = document.getElementById('caption');
-  const closeBtn = document.querySelector('.close');
+  // ==========================
+  // Gallery Lightbox
+  // ==========================
+  document.addEventListener('DOMContentLoaded', () => {
+    const galleryItems = document.querySelectorAll('.gallery-item img');
+    
+    galleryItems.forEach(img => {
+      img.addEventListener('click', () => {
+        const overlay = document.createElement('div');
+        overlay.classList.add('lightbox-overlay');
+        overlay.innerHTML = `<img src="${img.src}" alt="${img.alt}"><span class="lightbox-close">&times;</span>`;
+        document.body.appendChild(overlay);
 
-  galleryImages.forEach(img => {
-    img.addEventListener('click', () => {
-      lightbox.style.display = 'block';
-      lightboxImg.src = img.src;
-      caption.textContent = img.alt;
+        overlay.querySelector('.lightbox-close').addEventListener('click', () => overlay.remove());
+        overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+      });
     });
-  });
 
-  closeBtn.addEventListener('click', () => {
-    lightbox.style.display = 'none';
+    // ==========================
+    // Gallery Filters
+    // ==========================
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const galleryItemsLinks = document.querySelectorAll('.gallery-item');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelector('.filter-btn.active').classList.remove('active');
+        btn.classList.add('active');
+        const category = btn.dataset.category;
+        galleryItemsLinks.forEach(item => {
+          if (category === 'all' || item.dataset.category === category) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
   });
 </script>
 

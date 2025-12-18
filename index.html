@@ -23,6 +23,62 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* ==========================
+       Gallery CTA Section
+       ========================== */
+    .gallery-cta {
+      padding: 6rem 1.5rem;
+      background: linear-gradient(
+          rgba(0, 0, 0, 0.55),
+          rgba(0, 0, 0, 0.55)
+        ),
+        url("assets/images/hero/3dhero-edit1.jpg") center / cover no-repeat;
+      text-align: center;
+      border-radius: 8px;
+      margin: 4rem 1rem;
+    }
+
+    .gallery-cta-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .gallery-cta h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+
+    .gallery-cta p {
+      font-size: 1.1rem;
+      color: #ddd;
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+
+    .btn-luxury {
+      background: linear-gradient(135deg, #c9a24d, #8f6b2e);
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 0.8rem 2rem;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-luxury:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    /* Ensure spacing above footer */
+    footer {
+      padding-top: 4rem;
+    }
+  </style>
 </head>
 <body>
 
@@ -44,7 +100,7 @@
         <li><a href="#why-us">Why Choose Us</a></li>
         <li><a href="rooms.html">Rooms</a></li>
         <li><a href="membership.html">Membership</a></li>
-        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="nav-actions">
@@ -85,10 +141,10 @@
         Room
         <select name="room" required>
           <option value="" disabled selected>Select Room</option>
-          <option value="Platinum Suite - ₦30,000/night">Platinum Suite - ₦70,000/night</option>
-          <option value="Gold Suite - ₦25,000/night">Gold Suite - ₦55,000/night</option>
-          <option value="Deluxe Room - ₦15,000/night">Deluxe Room - ₦40,000/night</option>
-          <option value="Standard Room - ₦10,000/night">Standard Room - ₦25,000/night</option>
+          <option value="Platinum Suite - ₦70,000/night">Platinum Suite - ₦70,000/night</option>
+          <option value="Gold Suite - ₦55,000/night">Gold Suite - ₦55,000/night</option>
+          <option value="Deluxe Room - ₦40,000/night">Deluxe Room - ₦40,000/night</option>
+          <option value="Standard Room - ₦25,000/night">Standard Room - ₦25,000/night</option>
         </select>
       </label>
       <label>
@@ -105,33 +161,30 @@
   <section id="about" class="about-page">
     <div class="about-container">
       <div class="about-image">
-       <div class="about-slider">
-  <div class="about-slide active" style="background-image:url('assets/images/hero/3dhero-edit1.jpg');" aria-label="Hotel front view"></div>
-  <div class="about-slide" style="background-image:url('assets/images/hero/3dhero-edit1.jpg');" aria-label="Hotel exterior"></div>
-  <div class="about-slide" style="background-image:url('assets/images/about-slides/3dback-mainview.jpg');" aria-label="Hotel back view"></div>
-  <div class="about-slide" style="background-image:url('assets/images/about-slides/reception-lobby.jpg');" aria-label="Reception and lobby"></div>
-  <div class="about-slide" style="background-image:url('assets/images/about-slides/hotel-resturant.jpg');" aria-label="Restaurant"></div>
-  <div class="about-slide" style="background-image:url('assets/images/about-slides/hotel-bar.jpg');" aria-label="Hotel bar"></div>
-  <div class="about-slide" style="background-image:url('assets/images/rooms/exquisit-room3d.jpg');" aria-label="Hotel room"></div>
-  <div class="about-slide" style="background-image:url('assets/images/amenities/3d-pool.jpg');" aria-label="Swimming pool"></div>
-  <div class="about-slide" style="background-image:url('assets/images/about-slides/3devent-hall-3.jpg');" aria-label="Event hall"></div>
-  <div class="about-slide" style="background-image:url('assets/images/about-slides/3dhotel-clubstage.jpg');" aria-label="Club lobby"></div>
-  <div class="about-slide" style="background-image:url('assets/images/about-slides/food-glass1.jpg');" aria-label="Fine dining"></div>
-  <div class="about-slide" style="background-image:url('assets/images/about-slides/3dclub-lobby.jpg');" aria-label="3D Club Lobby"></div>
-  <div class="about-slide" style="background-image:url('assets/images/gallery/3d-hall-2.jpg');" aria-label="Event Hall 2"></div>
-</div>
+        <div class="about-slider">
+          <div class="about-slide active" style="background-image:url('assets/images/hero/3dhero-edit1.jpg');" aria-label="Hotel front view"></div>
+          <div class="about-slide" style="background-image:url('assets/images/hero/3dhero-edit1.jpg');" aria-label="Hotel exterior"></div>
+          <div class="about-slide" style="background-image:url('assets/images/about-slides/3dback-mainview.jpg');" aria-label="Exterior view of 3D Hotels building"></div>
+          <div class="about-slide" style="background-image:url('assets/images/about-slides/reception-lobby.jpg');" aria-label="Reception and lobby"></div>
+          <div class="about-slide" style="background-image:url('assets/images/about-slides/hotel-resturant.jpg');" aria-label="Restaurant"></div>
+          <div class="about-slide" style="background-image:url('assets/images/about-slides/hotel-bar.jpg');" aria-label="Stylish hotel bar with modern lighting"></div>
+          <div class="about-slide" style="background-image:url('assets/images/rooms/exquisit-room3d.jpg');" aria-label="Hotel room"></div>
+          <div class="about-slide" style="background-image:url('assets/images/amenities/3d-pool.jpg');" aria-label="Swimming pool"></div>
+          <div class="about-slide" style="background-image:url('assets/images/about-slides/3devent-hall-3.jpg');" aria-label="Event hall"></div>
+          <div class="about-slide" style="background-image:url('assets/images/about-slides/3dhotel-clubstage.jpg');" aria-label="Club lounge with cozy seating and ambient lightingy"></div>
+          <div class="about-slide" style="background-image:url('assets/images/about-slides/food-glass1.jpg');" aria-label="Fine dining"></div>
+          <div class="about-slide" style="background-image:url('assets/images/about-slides/3dclub-lobby.jpg');" aria-label="3D Club Lobby"></div>
+          <div class="about-slide" style="background-image:url('assets/images/gallery/3d-hall-2.jpg');" aria-label="Event Hall 2"></div>
+        </div>
+      </div>
 
-    </div>
-
-        <div class="about-content">
-  <h2>About 3D Hotels</h2>
-  <p><strong>3D Hotels</strong> sets the benchmark for luxury and comfort in Onitsha. From our elegantly designed rooms to world-class amenities, every detail is curated to provide an unparalleled stay.</p>
-  <p>Our dedicated team ensures seamless service, combining warm hospitality with attention to every guest need. Enjoy exquisite dining, rejuvenating wellness facilities, and personalized experiences that redefine relaxation.</p>
-  <p>Your safety and peace of mind are our top priorities, with advanced security measures ensuring a worry-free stay.</p>
-  <a href="rooms.html" class="btn">Explore Our Rooms</a>
-</div>
-
-
+      <div class="about-content">
+        <h2>About 3D Hotels</h2>
+        <p><strong>3D Hotels</strong> sets the benchmark for luxury and comfort in Onitsha. From our elegantly designed rooms to world-class amenities, every detail is curated to provide an unparalleled stay.</p>
+        <p>Our dedicated team ensures seamless service, combining warm hospitality with attention to every guest need. Enjoy exquisite dining, rejuvenating wellness facilities, and personalized experiences that redefine relaxation.</p>
+        <p>Your safety and peace of mind are our top priorities, with advanced security measures ensuring a worry-free stay.</p>
+        <a href="rooms.html" class="btn">Explore Our Rooms</a>
+      </div>
     </div>
   </section>
 
@@ -164,19 +217,14 @@
     </div>
   </section>
 
-  <!-- GALLERY -->
- <div class="gallery-grid">
-  <img src="assets/images/about-slides/hotel-lounge.jpg" alt="Hotel lounge" loading="lazy">
-  <img src="assets/images/about-slides/hotel-resturant.jpg" alt="Restaurant dining area" loading="lazy">
-  <img src="assets/images/about-slides/3dhotel-cakedisplay.jpg" alt="Cake display" loading="lazy">
-  <img src="assets/images/about-slides/hotel-bar.jpg" alt="Hotel bar" loading="lazy">
-  <img src="assets/images/about-slides/3dhotel-clubstage.jpg" alt="Club stage" loading="lazy">     
-  <img src="assets/images/about-slides/3devent-hall-3.jpg" alt="Event hall setup" loading="lazy">
-  <img src="assets/images/gallery/3dpool-fullview.jpg" alt="Hotel pool area" loading="lazy">
-  <img src="assets/images/about-slides/hotel-hallway.jpg" alt="Hotel hallway" loading="lazy">
-  <img src="assets/images/about-slides/3dclub-lobby.jpg" alt="Hotel club lobby" loading="lazy">
-</div>
-
+  <!-- GALLERY CTA -->
+  <section class="gallery-cta">
+    <div class="gallery-cta-inner">
+      <h2>Discover the World of 3D Hotels</h2>
+      <p>Step inside our elegant spaces, refined rooms, and unforgettable experiences.</p>
+      <a href="gallery.html" class="btn btn-luxury">Explore Our Gallery</a>
+    </div>
+  </section>
 
 </main>
 
@@ -184,8 +232,9 @@
   <h2>Contact Us</h2>
   <p>Email: <a href="mailto:booking@3dhotels.com">booking@3dhotels.com</a></p>
   <p>Phone: <a href="tel:+2348106983441">+234 8106983441</a></p>
-  <p>Address: Plot 86, Trans-Nkisi Along Onitsha-Otucha Road.33 Onitsha , Anambra State, Nigeria</p>
+  <p>Address: Plot 86, Trans-Nkisi Along Onitsha-Otucha Road.33 Onitsha, Anambra State, Nigeria</p>
 </footer>
+
 <script src="assets/js/main.js"></script>
 
 </body>
