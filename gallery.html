@@ -88,25 +88,29 @@
   </style>
 </head>
 <body>
-
 <header id="header">
   <div class="container header-inner">
     <div class="logo">3D Hotels</div>
 
+    <!-- Mobile Hamburger Toggle -->
     <button class="nav-toggle" aria-label="Toggle navigation">
       <span></span>
       <span></span>
       <span></span>
     </button>
 
-    <nav>
+    <nav aria-label="Primary navigation">
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="rooms.html">Rooms</a></li>
         <li><a href="membership.html">Membership</a></li>
-        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
+      <div class="nav-actions">
+        <a href="rooms.html" class="btn">Reserve Room</a>
+        <a href="contact.html" class="btn btn-outline">Get Direction</a>
+      </div>
     </nav>
   </div>
 </header>

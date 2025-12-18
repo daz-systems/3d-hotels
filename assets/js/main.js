@@ -14,12 +14,33 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Mobile nav toggle
-  const toggle = document.querySelector('.nav-toggle');
+  const navToggle = document.querySelector('.nav-toggle');
   const nav = document.querySelector('nav');
-  const links = document.querySelectorAll('nav ul li a');
 
-  toggle?.addEventListener('click', () => nav.classList.toggle('open'));
-  links.forEach(link => link.addEventListener('click', () => nav.classList.remove('open')));
+  const closeMenu = () => {
+    nav.classList.remove('open');
+    navToggle.classList.remove('open');
+  };
+
+  // Toggle menu on hamburger click
+  if (navToggle) {
+    navToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      nav.classList.toggle('open');
+      navToggle.classList.toggle('open'); // triggers bar-to-X animation
+    });
+  }
+
+  // Close menu when a nav link is clicked
+  document.querySelectorAll('nav ul li a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close menu when tapping/clicking outside
+  document.addEventListener('pointerdown', (event) => {
+    const isInside = nav.contains(event.target) || navToggle.contains(event.target);
+    if (!isInside) closeMenu();
+  });
 });
 
 // ==========================
@@ -53,47 +74,3 @@ function setVh() {
 }
 setVh();
 window.addEventListener('resize', setVh);
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Hamburger toggle
-  const navToggle = document.querySelector('.nav-toggle');
-  const nav = document.querySelector('nav');
-  const navLinks = document.querySelector('.nav-links');
-
-  // Toggle menu on hamburger click
-  navToggle.addEventListener('click', (e) => {
-    e.stopPropagation(); // prevent outside-close firing
-    nav.classList.toggle('open');
-    navLinks.classList.toggle('active');
-    navToggle.classList.toggle('open'); // triggers bar-to-X animation
-  });
-
-  // Close menu when a nav link is clicked
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      nav.classList.remove('open');
-      navLinks.classList.remove('active');
-      navToggle.classList.remove('open');
-    });
-  });
-
-  // Close menu when tapping/clicking outside
-  const closeMenu = () => {
-    nav.classList.remove('open');
-    navLinks.classList.remove('active');
-    navToggle.classList.remove('open');
-  };
-
-  const outsidePressHandler = (event) => {
-    const isInside = nav.contains(event.target) || navToggle.contains(event.target);
-    if (!isInside) closeMenu();
-  };
-
-  // Use pointer events for broad support
-  document.addEventListener('pointerdown', outsidePressHandler);
-
-  // Fallbacks for older browsers
-  document.addEventListener('touchstart', outsidePressHandler);
-  document.addEventListener('click', outsidePressHandler);
-});
