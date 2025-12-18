@@ -60,7 +60,26 @@ window.addEventListener('resize', setVh);
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');
 
+// Toggle menu on hamburger click
 navToggle.addEventListener('click', () => {
   navLinks.classList.toggle('active');
   navToggle.classList.toggle('open');
 });
+
+// Close menu when a nav link is clicked
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    navToggle.classList.remove('open');
+  });
+});
+
+// Close menu when clicking outside (mobile screen tap)
+document.addEventListener('click', (event) => {
+  const isClickInside = navLinks.contains(event.target) || navToggle.contains(event.target);
+  if (!isClickInside) {
+    navLinks.classList.remove('active');
+    navToggle.classList.remove('open');
+  }
+});
+
