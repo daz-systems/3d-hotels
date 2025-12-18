@@ -236,6 +236,15 @@
 </footer>
 
 <script src="assets/js/main.js"></script>
+<script>
+const navToggle = document.querySelector('.nav-toggle');
+const nav = document.querySelector('nav');
+
+navToggle.addEventListener('click', () => {
+  nav.classList.toggle('open');
+  navToggle.classList.toggle('active'); // optional animation
+});
+</script>
 
 </body>
 </html>
