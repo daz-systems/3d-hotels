@@ -56,11 +56,11 @@ window.addEventListener('resize', setVh);
 
 
 
-// Toggle mobile menu
+// Hamburger menu toggle
 const navToggle = document.querySelector('.nav-toggle');
-const nav = document.querySelector('nav');
+const navLinks = document.querySelector('.nav-links');
 
 navToggle.addEventListener('click', () => {
-  nav.classList.toggle('open');
-  navToggle.classList.toggle('active'); // optional for animation
+  navLinks.classList.toggle('active');
+  navToggle.classList.toggle('open');
 });
