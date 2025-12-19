@@ -26,16 +26,55 @@
     }
     .map-container {
       width: 100%;
-      height: 100vh; /* full viewport height */
+      height: 100vh;
+      position: relative;
     }
     iframe {
       width: 100%;
       height: 100%;
       border: 0;
+      display: block;
     }
-    main { padding-top: 80px; } /* prevent header overlap */
+    main { padding-top: 80px; }
+
+    /* ================= Map Loader ================= */
+    #map-loader {
+      position: absolute;
+      inset: 0;
+      background: #0b0b0b;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    #map-loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .loader-text {
+      text-align: center;
+      color: #c9a24d;
+      animation: fadePulse 1.5s infinite;
+    }
+    .loader-text span {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    .loader-text small {
+      display: block;
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    @keyframes fadePulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
   </style>
-  <script src="assets/js/main.js" defer></script>
 </head>
 <body>
 
@@ -75,11 +114,43 @@
       <p>Email: booking@3dhotels.com</p>
     </section>
 
-    <!-- Fullscreen Google Map -->
+    <!-- Fullscreen Google Map with Loader -->
     <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.6211999736465!2d6.796588173642845!3d6.181427093806062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10439347d99019e5%3A0xd824ad16a037409f!2s3D%20Food%20Court!5e0!3m2!1sen!2sng!4v1765217291520!5m2!1sen!2sng" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div id="map-loader">
+        <div class="loader-text">
+          <span>3D</span>
+          <small>HOTELS</small>
+        </div>
+      </div>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.6211999736465!2d6.796588173642845!3d6.181427093806062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10439347d99019e5%3A0xd824ad16a037409f!2s3D%20Food%20Court!5e0!3m2!1sen!2sng!4v1765217291520!5m2!1sen!2sng" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"
+        id="google-map"
+      ></iframe>
     </div>
   </main>
+
+  <script>
+    // MAP LOADER
+    const mapLoader = document.getElementById('map-loader');
+    const mapIframe = document.getElementById('google-map');
+    const minTime = 1500; // minimum loader time
+    const startTime = Date.now();
+
+    if (mapIframe && mapLoader) {
+      mapIframe.onload = () => {
+        const elapsed = Date.now() - startTime;
+        const delay = Math.max(minTime - elapsed, 0);
+        setTimeout(() => {
+          mapLoader.classList.add('hidden');
+          setTimeout(() => mapLoader.remove(), 700);
+        }, delay);
+      };
+    }
+  </script>
+  <script src="main.js"></script>
 
 </body>
 </html>
