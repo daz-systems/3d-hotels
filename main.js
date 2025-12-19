@@ -14,12 +14,39 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Mobile nav toggle
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.querySelector('nav');
-  const links = document.querySelectorAll('nav ul li a');
+  const navToggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('#header nav'); // target header nav specifically
 
-  toggle?.addEventListener('click', () => nav.classList.toggle('open'));
-  links.forEach(link => link.addEventListener('click', () => nav.classList.remove('open')));
+  const closeMenu = () => {
+    if (nav) nav.classList.remove('open');
+    if (navToggle) navToggle.classList.remove('open');
+  };
+
+  // Toggle menu on hamburger click
+  if (navToggle && nav) {
+    navToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      nav.classList.toggle('open');
+      navToggle.classList.toggle('open'); // triggers bar-to-X animation
+    });
+  }
+
+  // Close menu when a nav link is clicked
+  if (nav) {
+    nav.querySelectorAll('ul li a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+
+  // Close menu when tapping/clicking outside
+  const outsideHandler = (event) => {
+    const isInside = (nav && nav.contains(event.target)) || (navToggle && navToggle.contains(event.target));
+    if (!isInside) closeMenu();
+  };
+
+  document.addEventListener('pointerdown', outsideHandler);
+  document.addEventListener('touchstart', outsideHandler); // fallback for mobile Safari
+  document.addEventListener('click', outsideHandler);      // fallback for older browsers
 });
 
 // ==========================
@@ -52,4 +79,6 @@ function setVh() {
   document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
 }
 setVh();
-window.addEventListener('resize', setVh); s
+window.addEventListener('resize', setVh);
+
+// original js//

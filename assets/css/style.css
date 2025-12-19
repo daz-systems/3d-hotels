@@ -89,7 +89,7 @@ nav {
   background: var(--secondary-color);
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease;
+  transition: max-height 0.35s ease;
   z-index: 1500;
 }
 
@@ -765,6 +765,7 @@ background-size: cover;
 
 /* Membership */
 .membership-grid {
+  padding-top: 80px; /* adjust based on your header height */
   display: flex;
   gap: 2rem;
   justify-content: center;
