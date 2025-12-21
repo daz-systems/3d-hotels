@@ -89,7 +89,7 @@ nav {
   background: var(--secondary-color);
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease;
+  transition: max-height 0.35s ease;
   z-index: 1500;
 }
 
@@ -159,14 +159,25 @@ nav {
   left: 0;
   width: 100%;
   background: var(--secondary-color);
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
   z-index: 999;
 }
 
 nav.open {
-  max-height: 500px;
+  transform: translateY(0);
+}
+
+.nav-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0; /* middle bar disappears */
+}
+
+.nav-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 nav ul {
@@ -754,6 +765,7 @@ background-size: cover;
 
 /* Membership */
 .membership-grid {
+  padding-top: 80px; /* adjust based on your header height */
   display: flex;
   gap: 2rem;
   justify-content: center;
